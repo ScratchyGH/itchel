@@ -1,0 +1,144 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Itchel — Itch.io Web Game Downloader</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<div class="logo">
+<div class="logo-mark">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6.5C4 5.1 5.1 4 6.5 4h11C18.9 4 20 5.1 20 6.5v.4C20 8 19.3 8.9 18.3 9.3V16c0 2.2-1.8 4-4 4H9.7C7.5 20 5.7 18.2 5.7 16V9.3C4.7 8.9 4 8 4 6.9V6.5zM9 11v4h6v-4H9z"/>
+</svg>
+</div>
+<div class="logo-text">
+<h1>Itchel</h1>
+<p>Itch.io HTML5 game offline downloader</p>
+</div>
+</div>
+<div class="card">
+<label for="itchUrl">Game URL</label>
+<div class="input-row">
+<input type="url" id="itchUrl" placeholder="https://someone.itch.io/gamename"
+autocomplete="off" spellcheck="false">
+<button class="btn" id="goBtn" onclick="run()">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+<polygon points="5 3 19 12 5 21 5 3"/>
+</svg>
+Fetch
+</button>
+</div>
+<div style="margin-top: 18px;">
+<div class="proxy-bar">
+<span style="font-size: 11px; color: var(--muted); margin-right: 4px;">CORS proxy:</span>
+<span class="proxy-tag active" data-proxy="allorigins">AllOrigins</span>
+<span class="proxy-tag" data-proxy="corsproxy">CORS Proxy.io</span>
+<span class="proxy-tag" data-proxy="codetabs">CodeTabs</span>
+</div>
+<div style="font-size: 11px; color: var(--muted);">If one proxy fails, try another. All are free public services.</div>
+</div>
+<hr class="divider">
+<div class="toggle-row">
+<div>
+<div class="toggle-label">Remove itch.io tracking scripts</div>
+<div class="toggle-sub">Strips analytics &amp; game wrapper JS</div>
+</div>
+<label class="toggle">
+<input type="checkbox" id="optStrip" checked>
+<div class="toggle-track"></div>
+<div class="toggle-thumb"></div>
+</label>
+</div>
+<div class="toggle-row">
+<div>
+<div class="toggle-label">Fix asset base URL</div>
+<div class="toggle-sub">Rewrites relative paths to absolute so assets load offline</div>
+</div>
+<label class="toggle">
+<input type="checkbox" id="optBase" checked>
+<div class="toggle-track"></div>
+<div class="toggle-thumb"></div>
+</label>
+</div>
+<div class="toggle-row" style="margin-bottom: 0;">
+<div>
+<div class="toggle-label">Inject offline loader shim</div>
+<div class="toggle-sub">Stubs window.Itch so games don't crash without the wrapper</div>
+</div>
+<label class="toggle">
+<input type="checkbox" id="optShim" checked>
+<div class="toggle-track"></div>
+<div class="toggle-thumb"></div>
+</label>
+</div>
+</div>
+<div class="card" id="progressCard" style="display: none;">
+<div class="steps">
+<div class="step" id="s1">
+<div class="step-num">1</div>
+<div class="step-content">
+<div class="step-label">Fetch itch.io page</div>
+<div class="step-detail" id="s1d">Waiting…</div>
+</div>
+</div>
+<div class="step" id="s2">
+<div class="step-num">2</div>
+<div class="step-content">
+<div class="step-label">Extract game URL</div>
+<div class="step-detail" id="s2d">Waiting…</div>
+</div>
+</div>
+<div class="step" id="s3">
+<div class="step-num">3</div>
+<div class="step-content">
+<div class="step-label">Download game HTML</div>
+<div class="step-detail" id="s3d">Waiting…</div>
+</div>
+</div>
+<div class="step" id="s4">
+<div class="step-num">4</div>
+<div class="step-content">
+<div class="step-label">Process &amp; patch</div>
+<div class="step-detail" id="s4d">Waiting…</div>
+</div>
+</div>
+</div>
+</div>
+<div class="card result-box" id="resultCard">
+<div class="result-header">
+<div>
+<div class="result-title" id="resultTitle">Game ready</div>
+<div class="result-subtitle" id="resultSub"></div>
+</div>
+<span class="badge badge-success" id="resultBadge">Ready</span>
+</div>
+<div class="meta-row" id="metaRow"></div>
+<div class="note">
+<strong>How to play offline:</strong> Open the saved file in your browser.
+If assets don't load from <code>file://</code>, serve it locally with
+<code>npx serve .</code> or VS Code Live Server.
+</div>
+<div class="btn-row">
+<button class="btn btn-success" id="dlBtn" onclick="downloadGame()">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+<polyline points="7 10 12 15 17 10"/>
+<line x1="12" y1="15" x2="12" y2="3"/>
+</svg>
+Download HTML
+</button>
+<button class="btn btn-secondary" onclick="reset()">Start over</button>
+</div>
+</div>
+<footer>
+Itchel fetches the public HTML your browser would load anyway.<br>
+Respect <a href="https://itch.io/docs/legal/terms" target="_blank">itch.io's terms of service</a> and developers' wishes.
+</footer>
+</div>
+<script type="module" src="app.js"></script>
+</body>
+</html>
