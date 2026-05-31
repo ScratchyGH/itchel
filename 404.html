@@ -1,0 +1,162 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Itchel</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.page-404 {
+min-height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+padding: 40px 20px;
+}
+.four-oh-four {
+max-width: 420px;
+width: 100%;
+}
+.code {
+font-size: 96px;
+font-weight: 700;
+letter-spacing: -4px;
+line-height: 1;
+background: linear-gradient(135deg, var(--accent) 0%, #ff8a65 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+margin-bottom: 8px;
+}
+.label {
+font-size: 18px;
+font-weight: 600;
+color: var(--text);
+margin-bottom: 12px;
+}
+.desc {
+font-size: 14px;
+color: var(--muted);
+line-height: 1.7;
+margin-bottom: 32px;
+}
+.divider-line {
+width: 40px;
+height: 2px;
+background: var(--accent);
+margin: 0 auto 32px;
+border-radius: 2px;
+}
+.btn-home {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+background: var(--accent);
+color: #fff;
+border: none;
+border-radius: 8px;
+font-size: 14px;
+font-weight: 600;
+padding: 11px 22px;
+cursor: pointer;
+text-decoration: none;
+transition: background 0.15s, transform 0.1s;
+}
+.btn-home:hover {
+background: #e54545;
+}
+.btn-home:active {
+transform: scale(0.97);
+}
+.glitch {
+position: relative;
+display: inline-block;
+}
+.glitch::before,
+.glitch::after {
+content: '404';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+background: linear-gradient(135deg, var(--accent) 0%, #ff8a65 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+.glitch::before {
+animation: glitch-top 3s infinite;
+clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+}
+.glitch::after {
+animation: glitch-bot 3s infinite;
+clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+}
+@keyframes glitch-top {
+0%, 92%, 100% { transform: translate(0); opacity: 0; }
+93% { transform: translate(-3px, -2px); opacity: 0.8; }
+95% { transform: translate(3px, 0); opacity: 0.8; }
+97% { transform: translate(-2px, 2px); opacity: 0.8; }
+99% { transform: translate(0); opacity: 0; }
+}
+@keyframes glitch-bot {
+0%, 90%, 100% { transform: translate(0); opacity: 0; }
+91% { transform: translate(3px, 2px); opacity: 0.7; }
+93% { transform: translate(-3px, 0); opacity: 0.7; }
+95% { transform: translate(2px, -2px); opacity: 0.7; }
+97% { transform: translate(0); opacity: 0; }
+}
+.logo-small {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+margin-bottom: 40px;
+text-decoration: none;
+}
+.logo-small .mark {
+width: 28px;
+height: 28px;
+background: var(--accent);
+border-radius: 7px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.logo-small .mark svg {
+width: 15px;
+height: 15px;
+fill: white;
+}
+.logo-small span {
+font-size: 15px;
+font-weight: 700;
+color: #fff;
+}
+</style>
+</head>
+<body>
+<div class="page-404">
+<div class="four-oh-four">
+<a href="/" class="logo-small">
+<div class="mark">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6.5C4 5.1 5.1 4 6.5 4h11C18.9 4 20 5.1 20 6.5v.4C20 8 19.3 8.9 18.3 9.3V16c0 2.2-1.8 4-4 4H9.7C7.5 20 5.7 18.2 5.7 16V9.3C4.7 8.9 4 8 4 6.9V6.5zM9 11v4h6v-4H9z"/>
+</svg>
+</div>
+<span>Itchel</span>
+</a>
+<div class="code"><span class="glitch">404</span></div>
+<div class="divider-line"></div>
+<div class="label">Page not found</div>
+<div class="desc">The page you're looking for doesn't exist or was moved. Head back and try downloading another game.</div>
+<a href="/" class="btn-home">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+<polyline points="9 22 9 12 15 12 15 22"/>
+</svg>
+Back to Itchel
+</a>
+</div>
+</div>
+</body>
+</html>
