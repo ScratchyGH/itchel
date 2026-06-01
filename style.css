@@ -342,3 +342,18 @@ color: #444;
 line-height: 1.7;
 }
 footer a { color: #555; }
+.view-counter {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 8px;
+margin-top: 8px;
+padding: 10px 0 4px;
+font-size: 12px;
+color: #444;
+}
+.view-counter-num {
+font-weight: 700;
+color: #666;
+font-variant-numeric: tabular-nums;
+}
